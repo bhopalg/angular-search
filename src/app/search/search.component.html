@@ -6,9 +6,9 @@
     <mat-card-content style="max-height: calc(100vh - 175px); overflow-y: auto;">
         <div class="search-outer-container">
             <div class="search">
-                <form class="search-form">
+                <form class="search-form" [formGroup]="searchForm">
                     <mat-form-field class="search-box">
-                        <input matInput placeholder="Search Film">
+                        <input matInput placeholder="Search Film" formControlName="search">
                     </mat-form-field>
                 </form>
             </div>
