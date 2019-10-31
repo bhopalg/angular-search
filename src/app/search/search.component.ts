@@ -1,12 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { AutoUnsubscribe } from '../auto-unsubscribe/auto-unsubscribe';
 import { FormControl, FormGroup } from '@angular/forms';
-import { debounceTime, distinctUntilChanged, switchMap, tap } from 'rxjs/operators';
+import { debounceTime, distinctUntilChanged, map, switchMap, tap } from 'rxjs/operators';
 import { BehaviorSubject, Observable, of } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
+import { Film, APIReponse } from './search.models';
 
-const BASE_POSTER_PATH: string = `http://image.tmdb.org/t/p/w185/`;
-const KEY: string = '';
+const KEY: string = '086de18cdd64c38581465040046aac72';
+const BASE_POSTER_PATH: string = `http://image.tmdb.org/t/p/w185`;
 
 @Component({
   selector: 'app-search',
@@ -17,6 +18,7 @@ const KEY: string = '';
 export class SearchComponent implements OnInit {
   public searchForm: FormGroup;
   loading = new BehaviorSubject<boolean>(false);
+  films: BehaviorSubject<Film[]> = new BehaviorSubject<Film[]>([]);
 
   constructor(private http: HttpClient) {}
 
@@ -28,19 +30,29 @@ export class SearchComponent implements OnInit {
     this.searchForm
       .get('search')
       .valueChanges.pipe(
-        debounceTime(10000),
+        debounceTime(0),
         distinctUntilChanged(),
         tap(() => this.loading.next(true)),
         switchMap((searchValue: string) => (searchValue ? this.getFilms(searchValue) : of([]))),
+        map((films: APIReponse) => this.buildPostUrl(films.results)),
       )
-      .subscribe((data: any) => {
-        console.log(data);
+      .subscribe((films: Film[]) => {
+        this.films.next(films);
+        this.loading.next(false);
       });
   }
 
-  getFilms(film: string): Observable<any> {
-    return this.http.get(
-      `https://api.themoviedb.org/3/search/movie?api_key=${KEY}&language=en-GB&include_adult=false&query=${film}`,
+  buildPostUrl(films: Film[]): Film[] {
+    const clonedFilms: Film[] = [...films];
+    return clonedFilms.map((film: Film) => ({
+      ...film,
+      poster_path: `${BASE_POSTER_PATH}${film.poster_path}`,
+    }));
+  }
+
+  getFilms(film: string): Observable<APIReponse> {
+    return this.http.get<APIReponse>(
+      `https://api.themoviedb.org/3/search/movie?api_key=${KEY}&language=en-GB&include_adult=false&query=batman`,
     );
   }
 }

@@ -3,14 +3,17 @@
   display: block;
 }
 
-.search {
+.search, .film-card  {
   width: 50%;
-  display: block;
+  display: inline-block;
 }
+
 .search-form {
   min-width: 150px;
   max-width: 500px;
   width: 100%;
+  position: absolute;
+  top: 50px;
 }
 
 .search-box {
@@ -20,4 +23,8 @@
 
 .mat-card {
   height: 100%;
+}
+
+.search-card {
+  background: #eeeeee;
 }

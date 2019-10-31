@@ -1,0 +1,16 @@
+<mat-card>
+    <mat-card-title>{{film.title}}</mat-card-title>
+    <mat-card-content>
+        <div id='parent_div_1'>
+            <div class='child_div_1'></div>
+            <div class='child_div_2'></div>
+        </div>
+        <div style="width: 100%; display: block;">
+            <img mat-card-image [src]="film.poster_path" alt="film" style="width: 20%; display: inline-block; padding-left: 17px; padding-top: 10px;" />
+            <div style="width: 70%; display: inline-block; float: right;">
+                <p>{{film.overview}}</p>
+                <p>Rating - {{film.vote_average}}</p>
+            </div>
+        </div>
+    </mat-card-content>
+</mat-card>
