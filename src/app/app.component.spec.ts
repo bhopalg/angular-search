@@ -4,9 +4,7 @@ import { AppComponent } from './app.component';
 describe('AppComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [
-        AppComponent
-      ],
+      declarations: [AppComponent],
     }).compileComponents();
   }));
 
@@ -19,7 +17,7 @@ describe('AppComponent', () => {
   it(`should have as title 'angular-search'`, () => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.debugElement.componentInstance;
-    expect(app.title).toEqual('angular-search');
+    expect(app.title).toEqual('Angular Search');
   });
 
   it('should render title in a h1 tag', () => {
