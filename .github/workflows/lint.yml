@@ -1,0 +1,16 @@
+name: Lint Stage
+on: [pull_request]
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [10]
+    name: Lint
+    steps:
+      - uses: actions/checkout@v1
+      - run: yarn install --frozen-lockfile --non-interactive
+      - run: yarn lint
+        env:
+          CI: true
