@@ -22,3 +22,11 @@
 h2.app-name {
   margin-left: 10px;
 }
+
+.sidenav-container {
+  flex: 1;
+}
+
+.is-mobile .sidenav-container {
+  flex: 1 0 auto;
+}
