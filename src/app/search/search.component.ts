@@ -52,7 +52,7 @@ export class SearchComponent implements OnInit {
 
   getFilms(film: string): Observable<APIReponse> {
     return this.http.get<APIReponse>(
-      `https://api.themoviedb.org/3/search/movie?api_key=${KEY}&language=en-GB&include_adult=false&query=batman`,
+      `https://api.themoviedb.org/3/search/movie?api_key=${KEY}&language=en-GB&include_adult=false&query=${film}`,
     );
   }
 }
