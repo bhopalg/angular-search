@@ -1,8 +1,6 @@
 {
-  "defaultSeverity": "error",
-  "extends": [
-    "tslint:recommended",
-    "tslint-plugin-prettier"
+  "rulesDirectory": [
+    "node_modules/codelyzer"
   ],
   "rules": {
     "typedef": [
@@ -15,7 +13,6 @@
       "object-desctructuring",
       "array-destructuring"
     ],
-    "max-line-length": [ false ],
     "trailing-comma": [
       true,
       {
@@ -91,7 +88,6 @@
       "check-whitespace"
     ],
     "prefer-const": true,
-    "prettier": true,
     "quotemark": [
       true,
       "single"
@@ -115,7 +111,6 @@
         "variable-declaration": "nospace"
       }
     ],
-    "ordered-imports": false,
     "unified-signatures": true,
     "variable-name": false,
     "whitespace": [
@@ -126,17 +121,28 @@
       "check-separator",
       "check-type"
     ],
-    "interface-name": [
-      false
+    "directive-selector": [
+      true,
+      "attribute",
+      [
+        "app"
+      ],
+      "camelCase"
     ],
-    "array-type": [
-      false
+    "component-selector": [
+      true,
+      "element",
+      [
+        "app"
+      ],
+      "kebab-case"
     ],
-    "arrow-parens": false,
-    "max-classes-per-file": false,
-    "one-variable-per-declaration": [
-      false
-    ]
-  },
-  "rulesDirectory": []
+    "no-output-on-prefix": true,
+    "no-input-rename": true,
+    "no-output-rename": true,
+    "use-life-cycle-interface": true,
+    "use-pipe-transform-interface": true,
+    "component-class-suffix": true,
+    "directive-class-suffix": true
+  }
 }
