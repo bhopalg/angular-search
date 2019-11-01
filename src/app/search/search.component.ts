@@ -6,8 +6,8 @@ import { BehaviorSubject, Observable, of } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { Film, APIReponse } from './search.models';
 
-const KEY: string = '086de18cdd64c38581465040046aac72';
-const BASE_POSTER_PATH: string = `http://image.tmdb.org/t/p/w185`;
+const KEY: string = '';
+export const BASE_POSTER_PATH: string = `http://image.tmdb.org/t/p/w185`;
 
 @Component({
   selector: 'app-search',
