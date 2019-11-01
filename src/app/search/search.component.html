@@ -1,0 +1,25 @@
+<mat-card class="search-card">
+    <mat-card-header>
+        <mat-card-title>Search Film</mat-card-title>
+    </mat-card-header>
+
+    <mat-card-content style="max-height: calc(100vh - 175px); overflow-y: auto;">
+        <div class="search-outer-container">
+            <div class="search">
+                <form class="search-form" [formGroup]="searchForm">
+                    <mat-form-field class="search-box">
+                        <input matInput placeholder="Search Film" formControlName="search">
+                    </mat-form-field>
+                </form>
+            </div>
+            <div class="film-card" *ngIf="!(loading | async); else spinner">
+                <app-film-card *ngFor="let film of (films | async)" [film]="film" style="margin-bottom: 15px; display: block;"></app-film-card>
+            </div>
+            <ng-template #spinner>
+                <mat-spinner></mat-spinner>
+            </ng-template>
+        </div>
+    </mat-card-content>
+</mat-card>
+
+

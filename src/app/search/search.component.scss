@@ -1,0 +1,30 @@
+.search-outer-container {
+  width: 100%;
+  display: block;
+}
+
+.search, .film-card  {
+  width: 50%;
+  display: inline-block;
+}
+
+.search-form {
+  min-width: 150px;
+  max-width: 500px;
+  width: 100%;
+  position: absolute;
+  top: 50px;
+}
+
+.search-box {
+  width: 100%;
+  padding: 10px 10px 10px 18px;
+}
+
+.mat-card {
+  height: 100%;
+}
+
+.search-card {
+  background: #eeeeee;
+}
